@@ -100,7 +100,7 @@ class Place {
 			this.#glWindow.setPixelColor(x, y, color);
 			this.#glWindow.draw();
 		} else {
-			alert("Disconnected.");
+			alert("Lütfen oyunu yenileyiniz.");
 			console.error("Disconnected.");
 		}
 	}

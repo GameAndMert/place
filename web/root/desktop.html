@@ -2,12 +2,19 @@
 <html>
 
 <head>
-	<title>Place</title>
+	<title>TURKPIXEL</title>
 	<link rel="stylesheet" href="desktop.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta name="description" content="An online pixel canvas inspired by r/place.">
+	<meta name="description" content="TURKPIXEL made by mftkww">
 	<meta name="keywords" content="r/place, place, game, golang, canvas">
 	<link rel="preload" href="/place.png" as="fetch" crossorigin>
+   <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MQ6CH2N');</script>
+<!-- End Google Tag Manager -->
 </head>
 
 <body>
@@ -27,6 +34,80 @@
 			</button>
 		</div>
 	</div>
+  <div id="colors">
+    <button id="color1"></button>
+    <button id="color2"></button>
+    <button id="color3"></button>
+    <button id="color4"></button>
+    <button id="color5"></button>
+    <button id="color6"></button>
+    <button id="color7"></button>
+    <button id="color8"></button>
+    <button id="color9"></button>
+    <button id="color10"></button>
+    <button id="color11"></button>
+    <button id="color12"></button>
+    <button id="color13"></button>
+    <button id="color14"></button>
+    <button id="color15"></button>
+    <button id="color16"></button>
+    <button id="color17"></button>
+    <button id="color18"></button>
+    <button id="color19"></button>
+    <button id="color20"></button>
+    <button id="color21"></button>
+    <button id="color22"></button>
+    <button id="color23"></button>
+    <button id="color24"></button>
+    <button id="color25"></button>
+    <button id="color26"></button>
+    <button id="color27"></button>
+    <button id="color28"></button>
+    <button id="color29"></button>
+    <button id="color30"></button>
+  </div>
+  <button id="map-button"><a href="../place.png" download="place"><i class="fa-solid fa-download"></i></a></button>
+<div id="timer-wrapper">
+   <button id="timer">
+      <p><strong>0</strong></p>
+   </button>
+   <script>
+var timerButton = document.getElementById("timer");
+var timerCount = 0;
+var maxCount = 60;
+
+document.addEventListener("contextmenu", function(event) {
+   event.preventDefault();
+   if (timerCount < maxCount) {
+      timerCount += 4;
+      if (timerCount >= maxCount) {
+         timerCount = maxCount;
+         timerButton.disabled = true;
+      }
+   }
+   updateTimerCount();
+});
+
+function updateTimerCount() {
+   timerButton.querySelector("strong").innerText = timerCount;
+}
+
+function decreaseTimerCount() {
+   if (timerCount > 0) {
+      timerCount--;
+      if (timerCount < maxCount) {
+         timerButton.disabled = false;
+      }
+   }
+   updateTimerCount();
+}
+
+setInterval(decreaseTimerCount, 1000);
+
+</script>
+</div>
+
+   
 	<button id="help-button" onclick="document.querySelector('#help-popup').style.visibility = 'visible';">
 		<p><strong>Help</strong></p>
 	</button>
@@ -42,17 +123,50 @@
 			<p><strong>Long press</strong> to select a color from the canvas.</p><br>
 		</div>
 		<p>Set a hexadecimal color value in the lower left corner.</p><br>
-		<p>Source code on <a href="https://github.com/rbxb/place" target="_blank">GitHub</a>.</p>
+    <p><strong><a href="">Discord</a></strong></p><br>
 		<button id="close-help-popup"
 			onclick="document.querySelector('#help-popup').style.visibility = 'hidden';"><strong>Close
 				me.</strong></button>
 	</div>
+  <div id="pixelBack">
+    <i id="Emote" class="fa-solid fa-palette"><p id="pixelCounter"></p></i>
+  </div>
 	<script src="main.js"></script>
 	<script src="place.js"></script>
 	<script src="glwindow.js"></script>
+  <script src="country-restriction.js"></script>
 	<script>
 		main();
 	</script>
+  <script>
+          // Sayfa yüklendiğinde kaydedilen piksel sayısı
+      var pixelCount = localStorage.getItem("pixelCount") || 0;
+
+      // Piksel sayısını artıran işlev
+      function increasePixelCount() {
+        pixelCount++;
+        localStorage.setItem("pixelCount", pixelCount);
+        document.getElementById("pixelCounter").innerText = pixelCount;
+      }
+
+      // Sağ tıklandığında piksel sayısını artıran işlev
+      window.addEventListener("contextmenu", function(event) {
+        event.preventDefault();
+        increasePixelCount();
+      });
+
+      // Sayfa yüklendiğinde piksel sayısını görüntüleme
+      window.onload = function() {
+        document.getElementById("pixelCounter").innerText = pixelCount;
+      };
+  </script>
+  <script src="https://kit.fontawesome.com/3b3a73d22f.js" crossorigin="anonymous"></script>
+  <script src="online.js">
+	</script>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ6CH2N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 </body>
 
 </html>
